@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <img src="../pic/logo.png" alt="Logo">
+  </div>
+  <div class="profile-icon" id="profile-container">
+    <img src="../pic/icon.png" alt="Profile Icon" id="profile-icon">
+    <div class="profile-dropdown" id="profile-dropdown">
+      <ul>
+        <li><a href="" id="profile">Profile</a></li>
+        <li><a href="../../snr/logout.php">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="sidenav">
+    <ul>
+    <li><a href="" class="nav-option" id="Home">Home</a></li>      
+    <li><a href="" class="nav-option" id="Patient_Information">Patient Information</a></li>
+      <li><a href="" class="nav-option" id="Appointment_Scheduling">Appointment Scheduling</a></li>
+      <li><a href="" class="nav-option" id="Lab_test_result">Laboratory and Test Results</a></li>
+      <li><a href="" class="nav-option" id="Add_Doctor">Doctor</a></li>
+      <li><a href="" class="nav-option" id="Pharmacy">Pharmacy Management</a></li>
+      <li><a href="" class="nav-option" id="Ordered_items">Orders Received</a></li>
+
+    </ul>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const profileIcon = document.getElementById('profile-icon');
+      const profileDropdown = document.getElementById('profile-dropdown');
+      const profileContainer = document.getElementById('profile-container');
+  
+      
+      profileContainer.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+  
+        if (profileDropdown.style.display === 'block') {
+          profileDropdown.style.display = 'none';
+        } else {
+          profileDropdown.style.display = 'block';
+        }
+      });
+  
+      
+      document.addEventListener('click', function(event) {
+        if (event.target !== profileIcon && event.target !== profileDropdown) {
+          profileDropdown.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  <div class="main" id="main-content">
+    
+    <h2>Welcome</h2>
+    <p>Hello! Welcome to the page.</p>
+  </div>
+  <script>
+function loadDefaultContent() {
+        getNameFromDatabase(function(data) {
+            var imgWrapper = $('<div>', {
+                css: {
+                    'position': 'relative',
+                    'display': 'flex',
+                    'justify-content': 'center',
+                    'align-items': 'center',
+                    'height': '90%',
+                    'overflow': 'hidden'
+                }
+            });
+
+            var img = $('<img>', {
+                src: '../pic/logo.png',
+                alt: 'Logo',
+                css: {
+                    'max-width': '100%',
+                    'max-height': '90%',
+                    'height': 'auto',
+                    'opacity': '0.3'
+                }
+            });
+
+            var text = $('<p>', {
+                text: 'Welcome ' + data,
+                css: {
+                    'position': 'absolute',
+                    'color': 'black',
+                    'font-size': '40px',
+                    'font-weight': 'bold',
+                    'text-shadow': '1px 1px 2px black',
+                    'z-index': '1',
+                    'margin': '0',
+                    'padding': '20px'
+                }
+            });
+
+            imgWrapper.append(img, text);
+
+            $('#main-content').html(imgWrapper);
+        });
+    }
+  
+  
+  $(document).ready(function() {
+    loadDefaultContent();
+  });
+     $(document).ready(function() {
+      $('#profile').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'profile.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+    $(document).ready(function() {
+      $('#Patient_Information').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'patient_info.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+    $(document).ready(function() {
+      $('#Lab_test_result').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'labresult.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load Lab Result.'); 
+          }
+        });
+      });
+    });
+    $(document).ready(function() {
+      $('#Appointment_Scheduling').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'schedule.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+
+    $(document).ready(function() {
+      $('#Add_Doctor').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'doctor_signup.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+
+    function getNameFromDatabase(callback) {
+        $.ajax({
+            url: "get_name.php",
+            type: "GET",
+            success: function(data) {
+              var name = JSON.parse(data).name;
+
+                callback(name);
+            },
+            error: function() {
+                callback("Guest"); 
+            }
+        });
+    }
+    $(document).ready(function() {
+      $('#Pharmacy').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'pharmacy.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+    $(document).ready(function() {
+    $('#Ordered_items').on('click', function(e) {
+        e.preventDefault(); 
+
+        
+        $.ajax({
+            url: 'orders.php', 
+            type: 'GET',
+            success: function(data) {
+                $('#main-content').html(data); 
+            },
+            error: function() {
+                $('#main-content').html('Failed to load patient information.'); 
+            }
+        });
+    });
+    $('#main-content').on('click', '.delivered',function(){
+      event.preventDefault();
+      var orderId = $(this).closest('tr').find('td:first').text();
+      var status = 'Delivered';
+      $.ajax({
+        url:'orders.php',
+        type:'POST',
+        data: { order_id: orderId, status: status },
+        success: function(data){
+          $('#main-content').html(data);
+        },
+        error:function() {
+          $('#main-content').html('Failed to deliver order.')
+        }
+      });
+    });
+
+    
+    $('#main-content').on('click', '.order-row', function() {
+      if (!$(event.target).hasClass('delivered')) {
+            var orderId = $(this).find('td:first').text();
+            loadOrderInfo(orderId);
+        }
+    });
+
+    
+    function loadOrderInfo(orderId) {
+        $.ajax({
+            url: 'order_info.php?order_id=' + orderId,
+            type: 'GET',
+            success: function(data) {
+                $('#main-content').html(data); 
+            },
+            error: function() {
+                $('#main-content').html('Failed to load patient information.'); 
+            }
+        });
+    }
+});
+  </script>
+</body>
+</html>

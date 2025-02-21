@@ -1,0 +1,176 @@
+
+body, h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+header {
+  background-color: #f0f0f0;
+  width: 100%;
+}
+
+.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width:100%;
+
+}
+
+.logo img {
+  width: 80px; 
+  height: 70px; 
+}
+
+.search-bar {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 200px; 
+  padding: 5px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-icon img {
+  width: 50px; 
+}
+
+
+
+.main {
+  padding-top: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow-x: hidden; 
+}
+
+.item {
+  width: calc(20% - 20px);
+  margin-bottom: 20px;
+  position: relative; 
+   z-index: 1;
+}
+
+.product-box {
+  border: 2px solid blue;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-box img {
+  max-width: 80%;
+  height: auto;
+}
+
+.product-name,
+.product-price {
+  margin-top: 10px;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+.buy-now,
+.add-to-cart {
+  padding: 8px 20px;
+  margin-right: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-now:hover,
+.add-to-cart:hover {
+  background-color: darkblue;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+
+ 
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.footer-column h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.footer-column p {
+  margin: 0;
+  font-size: 16px;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.bump {
+  animation: bump 0.3s ease;
+}
+#cart-count {
+  font-size: 18px; 
+  color: red; 
+}
+

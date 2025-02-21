@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/snr/hospital-dashboard/styles.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <img src="../pic/logo.png" alt="Logo">
+  </div>
+  <div class="profile-icon" id="profile-container">
+    <img src="../pic/icon.png" alt="Profile Icon" id="profile-icon">
+    <div class="profile-dropdown" id="profile-dropdown">
+      <ul>
+        <li><a href="" id="profile">Profile</a></li>
+        <li><a href="../../snr/logout.php">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="sidenav">
+    <ul>
+    <li><a href="" class="nav-option" id="Home">Home</a></li>      
+    <li><a href="" class="nav-option" id="Patient_Record">Patient Records</a></li>
+      <li><a href="" class="nav-option" id="Appointments">Appointments</a></li>
+      <li><a href="" class="nav-option" id="Comm_Alerts">Patient Communications</a></li>
+    </ul>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const profileIcon = document.getElementById('profile-icon');
+      const profileDropdown = document.getElementById('profile-dropdown');
+      const profileContainer = document.getElementById('profile-container');
+  
+      
+      profileContainer.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+  
+        if (profileDropdown.style.display === 'block') {
+          profileDropdown.style.display = 'none';
+        } else {
+          profileDropdown.style.display = 'block';
+        }
+      });
+  
+      
+      document.addEventListener('click', function(event) {
+        if (event.target !== profileIcon && event.target !== profileDropdown) {
+          profileDropdown.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  <div class="main" id="main-content">
+    
+    <h2>Welcome</h2>
+    <p>Hello! Welcome to the page.</p>
+  </div>
+  <script>
+    function loadDefaultContent() {
+        getNameFromDatabase(function(data) {
+            var imgWrapper = $('<div>', {
+                css: {
+                    'position': 'relative',
+                    'display': 'flex',
+                    'justify-content': 'center',
+                    'align-items': 'center',
+                    'height': '90%',
+                    'overflow': 'hidden'
+                }
+            });
+
+            var img = $('<img>', {
+                src: '../pic/logo.png',
+                alt: 'Logo',
+                css: {
+                    'max-width': '100%',
+                    'max-height': '90%',
+                    'height': 'auto',
+                    'opacity': '0.3'
+                }
+            });
+
+            var text = $('<p>', {
+                text: 'Welcome Dr. '+ data,
+                css: {
+                    'position': 'absolute',
+                    'color': 'black',
+                    'font-size': '40px',
+                    'font-weight': 'bold',
+                    'text-shadow': '1px 1px 2px black',
+                    'z-index': '1',
+                    'margin': '0',
+                    'padding': '20px'
+                }
+            });
+
+            imgWrapper.append(img, text);
+
+            $('#main-content').html(imgWrapper);
+        });
+    }
+  
+  
+  $(document).ready(function() {
+    loadDefaultContent();
+  });
+        $(document).ready(function() {
+      $('#profile').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'profile.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+   $(document).ready(function() {
+    $('#Patient_Record').on('click', function(e) {
+        e.preventDefault(); 
+
+        
+        $.ajax({
+            url: 'patients.php', 
+            type: 'GET',
+            success: function(data) {
+                $('#main-content').html(data); 
+            },
+            error: function() {
+                $('#main-content').html('Failed to load patient information.'); 
+            }
+        });
+    });
+
+    
+    $('#main-content').on('click', '.patient-row', function() {
+        var patientId = $(this).find('td:first').text();
+        loadPatientInfo(patientId);
+    });
+
+    
+    function loadPatientInfo(patientId) {
+        $.ajax({
+            url: 'patient_info.php?patient_id=' + patientId,
+            type: 'GET',
+            success: function(data) {
+                $('#main-content').html(data); 
+            },
+            error: function() {
+                $('#main-content').html('Failed to load patient information.'); 
+            }
+        });
+    }
+});
+$(document).ready(function() {
+      $('#Appointments').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'appointments.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load patient information.'); 
+          }
+        });
+      });
+    });
+   
+    $(document).ready(function() {
+      $('#Comm_Alerts').on('click', function(e) {
+        e.preventDefault(); 
+  
+        
+        $.ajax({
+          url: 'load_patients.php', 
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data); 
+          },
+          error: function() {
+            $('#main-content').html('Failed to load Chat system.'); 
+          }
+        });
+      });
+      $('#main-content').on('click', '#doctor', function(){
+        var patientId = $(this).data('patient-id');
+        var patientName=$(this).data('patient-name');
+        var patientProfile=$(this).data('patient-profile');
+        loadMessages(patientId, patientName, patientProfile);
+      });
+      function loadMessages(patientId, patientName, patientProfile){
+        $.ajax({
+          url: 'patientcomm.php?patient_id=' + patientId + '&patientName='+ patientName + '&patientProfile='+ patientProfile,
+          type: 'GET',
+          success: function(data) {
+            $('#main-content').html(data);
+          },
+          error: function(){
+            $('#main-content').html('Failed to messages.'); 
+          }
+        });
+      }
+     
+
+    });
+    function getNameFromDatabase(callback) {
+        $.ajax({
+            url: "get_name.php",
+            type: "GET",
+            success: function(data) {
+              var name = JSON.parse(data).name;
+
+                callback(name);
+            },
+            error: function() {
+                callback("Guest"); 
+            }
+        });
+    }
+
+
+  </script>
+</body>
+</html>
