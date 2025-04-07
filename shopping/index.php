@@ -12,7 +12,7 @@
         <a href="/snr/index.php"><img src="../pic/logo.png" alt="Logo" ></a>
       </div>
       <div class="search-bar">
-        <form method="GET" action="index.php">
+        <form method="GET" action="index.php">    
           <input type="text" name="search" placeholder="Search...">
           <button type="submit">Search</button>
         </form>

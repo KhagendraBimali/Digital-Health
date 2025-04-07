@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if (!isset($_SESSION['patient_id'])) {
-    header("Location:../../snr/index.php");
+    header("Location:../..index.php");
     exit();
   }
 $patient_id = $_SESSION['patient_id'];
@@ -200,8 +200,8 @@ function getRecommendedHospitals($location, $medicalHistory, $conn) {
 <head>
     <title>Signup Form</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../../snr/table.css">
-    <link rel="stylesheet" type="text/css" href="../../snr/patient_signup.css">
+    <link rel="stylesheet" href="../..table.css">
+    <link rel="stylesheet" type="text/css" href="../../patient_signup.css">
     <style>
 
         .form-section.active {
