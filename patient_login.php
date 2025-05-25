@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
     if ($count == 1) {
         while($row=mysqli_fetch_assoc($result)){
-            if($row["status"] === 'active'){
+
             if(password_verify($password, $row['password'])){
                 $_SESSION['patient_id'] = $row['patient_id'];
                 $_SESSION['email'] = $row['email'];
@@ -25,13 +25,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             }
         }
-        else{
-            $_SESSION['email'] = $email;
-            $_SESSION['signup'] = true;
-            echo 'Email not verified';
-            header("Location: verify.php");
-        }
-        }
+
     } else {
         $error_message = "Invalid Email or Password";
     }

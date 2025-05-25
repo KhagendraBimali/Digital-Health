@@ -16,7 +16,13 @@ if ($conn->connect_error) {
 }
 
 
-$patientId = $_SESSION['patient_id'];
+$patientId = isset($_SESSION['patient_id']) ? $_SESSION['patient_id'] : null;
+if (!$patientId) {
+    echo "<h2 style='color:red;'>No patient session found. Please log in again.</h2>";
+    exit;
+}
+
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $full_name = $_POST['full_name'];
     $age = $_POST['age'];
@@ -31,8 +37,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $stmt->execute() ;
     
     if ($profile['error'] == UPLOAD_ERR_OK) {
-        $profileDirectory = "C:/xampp/htdocs/snr/pic/";
-        $targetProfile = "/snr/pic/" . basename($profile['name']);
+        $profileDirectory = "C:/xampp/htdocs/pic/";
+        $targetProfile = "pic/" . basename($profile['name']);
         $profilePath = $profileDirectory . basename($profile['name']);
         
         move_uploaded_file($profile['tmp_name'], $profilePath);
@@ -47,11 +53,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     
     if (is_array($images) && count($images['name']) > 0) {
         for ($i = 0; $i < count($images['name']); $i++) {
-            $tDirectory = "C:/xampp/htdocs/snr/pic/";
+            $tDirectory = "C:/xampp/htdocs/pic/";
             
             if ($images['error'][$i] == UPLOAD_ERR_OK) {
                 
-                $targetDirectory = "/snr/pic/";
+                $targetDirectory = "pic/";
                 $targetDirectory = $targetDirectory . basename($images['name'][ $i ]);
                 $imagePath = $tDirectory . basename($images['name'][$i]);
                 

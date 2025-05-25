@@ -44,14 +44,14 @@ $conn->close();
     <title>Signup Form</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/snr/style.css">
-    <link rel="stylesheet" type="text/css" href="/snr/patient_signup.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/patient_signup.css">
 </head>
 <body>
-    <?php include "../../snr/header.html"?>
+    <?php include "../../header.html"?>
     <div class="signup-container">
         <div class="left-section">
-            <img src="/snr/pic/logo.png" alt="Your Logo">
+            <img src="/pic/logo.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">
@@ -66,7 +66,7 @@ $conn->close();
         </div>
     </div>
     <footer>
-    <?php include "../../snr/footer.html" ?>
+    <?php include "../../footer.html" ?>
     </footer>
 </body>
 </html>

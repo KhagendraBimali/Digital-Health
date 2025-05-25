@@ -9,7 +9,7 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="/snr/index.php"><img src="../pic/logo.png" alt="Logo" ></a>
+        <a href="/project/index.php"><img src="../pic/logo.png" alt="Logo" ></a>
       </div>
       <div class="search-bar">
         <form method="GET" action="index.php">    
@@ -18,7 +18,7 @@
         </form>
       </div>
       <div class="cart-icon">
-  <a href="/snr/shopping/cart.php"><img src="../pic/cart.png" alt="Cart"></a>
+  <a href="/project/shopping/cart.php"><img src="../pic/cart.png" alt="Cart"></a>
   <span id="cart-count">0</span> 
 </div>
     </nav>
@@ -136,7 +136,7 @@ if (isset($_GET['sort'])) {
             echo '<p class="product-name"> By ' . $result["full_name"] . '</p>';
             echo '<p class="product-price">$' . $result["price"] . '</p>';
             echo '<div class="buttons">';
-            echo '<a href="/snr/shopping/cart.php"><button class="buy-now" onclick="addToCart(' . $result["product_id"] . ',\''.$result["name"].'\',' . $result["price"] .',\' '. $result["image_path"].'\', '. $result['hospital_id'].')">Buy Now</button></a>';
+            echo '<a href="/project/shopping/cart.php"><button class="buy-now" onclick="addToCart(' . $result["product_id"] . ',\''.$result["name"].'\',' . $result["price"] .',\' '. $result["image_path"].'\', '. $result['hospital_id'].')">Buy Now</button></a>';
             echo '<button class="add-to-cart" onclick="addToCart(' . $result["product_id"] . ',\''.$result["name"].'\',' . $result["price"] .',\'' .$result["image_path"].'\','. $result['hospital_id'].')">Add to Cart </button>';
             echo '</div>';
             echo '</div>';
@@ -155,7 +155,7 @@ if (isset($_GET['sort'])) {
           echo '<p class="product-name">' . $row["full_name"] . '</p>';
           echo '<p class="product-price">$' . $row["price"] . '</p>';
           echo '<div class="buttons">';
-          echo '<a href="/snr/shopping/cart.php"><button class="buy-now" onclick="addToCart(' . $row["product_id"] . ',\'' . $row["name"] .'\',' . $row["price"] . ',\' '. $row["image_path"].'\', '. $row['hospital_id'].')">Buy Now</button></a>';
+          echo '<a href="/project/shopping/cart.php"><button class="buy-now" onclick="addToCart(' . $row["product_id"] . ',\'' . $row["name"] . '\',' . $row["price"] . ',\' '. $row["image_path"].'\', '. $row['hospital_id'].')">Buy Now</button></a>';
           echo '<button class="add-to-cart" onclick="addToCart(' . $row["product_id"] . ',\'' . $row["name"] .'\',' . $row["price"] . ',\' '. $row["image_path"].'\', '. $row['hospital_id'].')">Add to Cart </button>';
           echo '</div>';
           echo '</div>';
@@ -168,7 +168,7 @@ if (isset($_GET['sort'])) {
       ?>
     </div>
   </main>
-  <?php include "../../snr/footer.html";?>
+  <?php include "../../project/footer.html";?>
 </body>
 </html>
 

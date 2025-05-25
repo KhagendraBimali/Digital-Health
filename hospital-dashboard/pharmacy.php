@@ -46,8 +46,8 @@ function searchProducts($searchTerm, $products) {
 ?>
 <head>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../../snr/table.css">
-    <link rel="stylesheet" type="text/css" href="../../snr/patient_signup.css">
+    <link rel="stylesheet" href="../../table.css">
+    <link rel="stylesheet" type="text/css" href="../../patient_signup.css">
     <style>
 
         form {

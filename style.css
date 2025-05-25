@@ -308,6 +308,71 @@ footer {
     }
 }
 
+/* Footer Green Background */
+.footer, footer {
+  background: #219653 !important;
+  color: #fff !important;
+}
+.footer a, footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer a:hover, footer a:hover {
+  color: #e0ffe0;
+}
+
+/* Navbar Hover Animation */
+.nav-links li a, .navbar a {
+  transition: color 0.3s;
+}
+.nav-links li a:hover, .navbar a:hover {
+  color: #219653 !important;
+}
+
+/* Section Titles Hover Animation */
+#logins, #about, #contact {
+  transition: color 0.3s;
+  cursor: pointer;
+}
+#logins:hover, #about:hover, #contact:hover {
+  color: #219653;
+}
+
+/* Slider Styles */
+.slider-container, .carousel-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 32px auto 0 auto;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  background: #fff;
+  position: relative;
+}
+.slider-track, .carousel-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  transition: transform 0.7s cubic-bezier(0.77,0,0.175,1);
+  will-change: transform;
+}
+.slider-slide img, .carousel-slide img {
+  width: 100vw;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+@media (max-width: 900px) {
+  .slider-slide img, .carousel-slide img {
+    height: 180px;
+  }
+  .slider-container, .carousel-container {
+    max-width: 98vw;
+  }
+}
+
 
 
 

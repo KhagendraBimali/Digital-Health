@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Shopping Cart</title>
-  <link rel="stylesheet" href="../../snr/table.css">
+  <link rel="stylesheet" href="../../table.css">
 
   <style>
     body {

@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="../../snr/table.css">
+    <link rel="stylesheet" href="../../table.css">
 </head>
 <h1>Your Appointments</h1>
 <?php

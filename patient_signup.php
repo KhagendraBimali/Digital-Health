@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST["phone"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $profile = '/snr/pic/logo.png';
+    $profile = '/project/pic/logo.png';
     if ($password !== $confirm_password) {
         echo "Error: Passwords do not match.";
         exit;
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['email'] = $email;
         $_SESSION['full_name'] = $full_name;
         $_SESSION['signup'] = true;
-        header("Location: verify.php");
+        header("Location: patient_login.php");
         exit;
     } else {
         echo "Error: " . $conn->error;
@@ -131,6 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             };
             xhr.send('email=' + encodeURIComponent(email));
             isValid = xhr.onload();
+            return isValid;
         }
 
         
@@ -168,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="right-section">
             <div class="signup-box">
-                <form id="signupForm" action="patient_signup.php" method="post" onsubmit="return validateForm()">
+                <form id="signupForm" action="patient_signup.php" method="POST" onsubmit="return validateForm()">
                     <h1>Create an Account</h1>
                     <div class="input-container">
                         <input type="text" name="full_name" placeholder="Full Name" id="full_name">

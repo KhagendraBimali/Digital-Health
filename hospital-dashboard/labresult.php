@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function handleFileUpload($file)
 {
     if ($file['error'] == UPLOAD_ERR_OK) {
-        $uploadDirectory = "C:/xampp/htdocs/snr/pic/";
-        $targetPath = "/snr/pic/" . basename($file['name']);
+        $uploadDirectory = "C:/xampp/htdocs/pic/";
+        $targetPath = "pic/" . basename($file['name']);
         $filePath = $uploadDirectory . basename($file['name']);
 
         move_uploaded_file($file['tmp_name'], $filePath);

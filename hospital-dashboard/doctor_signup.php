@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if (!isset($_SESSION['hospital_id'])) {
-    header("Location:../../snr/index.php");
+    header("Location:../../index.php");
     exit();
   }
   
@@ -136,8 +136,8 @@ try{
 <html>
 <head>
     <title>Signup Form</title>
-    <link rel="stylesheet" href="../../snr/table.css">
-    <link rel="stylesheet" type="text/css" href="../../snr/patient_signup.css">
+    <link rel="stylesheet" href="../../table.css">
+    <link rel="stylesheet" type="text/css" href="../../patient_signup.css">
     <script src="https:
 
 <script>

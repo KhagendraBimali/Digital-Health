@@ -130,7 +130,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if (!isset($_SESSION['doctor_id'])) {
-    header("Location:../../snr/index.php");
+    header("Location:../../index.php");
     exit();
 }
 
@@ -144,8 +144,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     
     
     if ($profile['error'] == UPLOAD_ERR_OK) {
-        $profileDirectory = "C:/xampp/htdocs/snr/pic/";
-        $targetProfile = "/snr/pic/" . basename($profile['name']);
+        $profileDirectory = "C:/xampp/htdocs/pic/";
+        $targetProfile = "/pic" . basename($profile['name']);
         $profilePath = $profileDirectory . basename($profile['name']);
         
         move_uploaded_file($profile['tmp_name'], $profilePath);

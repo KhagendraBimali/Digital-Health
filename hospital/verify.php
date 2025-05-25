@@ -99,12 +99,12 @@ else {
     <title>OTP Verification</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/snr/style.css">
-    <link rel="stylesheet" type="text/css" href="/snr/patient_signup.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/patient_signup.css">
 </head>
 <body>
     <div>
-        <?php include('../../snr/header.html');?>
+        <?php include('../../header.html');?>
 
     </div>
     <div class='signup-container'>
@@ -117,7 +117,7 @@ else {
         </div>
     </div>
     <footer style="position: fixed; width: -webkit-fill-available; bottom: 0px">
-    <?php include "../../snr/footer.html" ?>
+    <?php include "../../footer.html" ?>
     </footer>
 </body>
 </html>

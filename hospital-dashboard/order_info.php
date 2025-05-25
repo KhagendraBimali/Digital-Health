@@ -32,7 +32,7 @@ $conn->close();
 ?>
 
 <head>
-    <link rel="stylesheet" href="../../snr/table.css">
+    <link rel="stylesheet" href="../../table.css">
     <style>
         #back {
             margin: 16px;
@@ -94,7 +94,7 @@ $conn->close();
                 var printWindow = window.open('', '_blank');
                 var printContents = document.getElementById('info').innerHTML;
                 var originalContents = document.body.innerHTML;
-                printWindow.document.write('<link rel="stylesheet" href="../../snr/table.css">');
+                printWindow.document.write('<link rel="stylesheet" href="../../table.css">');
                 printWindow.document.write('<style>h3 { text-align: center;}h4 {margin-top: 2px;margin-bottom: 2px ;}#information {margin-right: 200px;margin-left: 200px;}.oid, .add {display: flex;justify-content: space-between;}</style>');
                     printWindow.document.write(printContents);
                     printWindow.document.close();

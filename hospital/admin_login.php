@@ -12,11 +12,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
     if ($count == 1) {
         while($row=mysqli_fetch_assoc($result)){
-            if($row["status"] === 'active'){
+            
             if(password_verify($password, $row['password'])){
                 $_SESSION['hospital_id']= $row['hospital_id'];
                 $_SESSION['email'] = $row['email'];
-                header("Location: ../../snr/hospital-dashboard/dashboard.html");
+                header("Location: /project/hospital-dashboard/dashboard.html");
                 exit;
             }
             else{
@@ -24,13 +24,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 $error_message = "Invalid Email or Password";
 
             }
-        } 
-        else{
-            $_SESSION['email'] = $email;
-            $_SESSION['signup'] = true;
-            echo 'Email not verified';
-            header("Location: verify.php");
-        }
+        
     } 
 } else {
     $error_message = "Invalid Email or Password";
@@ -41,14 +35,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="/snr/style.css">
-    <link rel="stylesheet" type="text/css" href="/snr/patient_signup.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../patient_signup.css">
 </head>
 <body>
-    <?php include "../../snr/header.html"?>
+    <?php include "../header.html"?>
     <div class="signup-container">
         <div class="left-section">
-            <img src="/snr/pic/logo.png" alt="Your Logo">
+            <img src="../pic/logo.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">
@@ -71,6 +65,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             </div>
         </div>
     </div>
-    <?php include "../../snr/footer.html"?>
+    <?php include "../footer.html"?>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patients List</title>
-    <link rel="stylesheet" href="../../snr/table.css">
+    <link rel="stylesheet" href="../../table.css">
     <script src="https:
     <script>
         $(document).ready(function() {

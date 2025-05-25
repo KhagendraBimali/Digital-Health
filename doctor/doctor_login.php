@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         while($row=mysqli_fetch_assoc($result)){
             if(password_verify($password, $row['password'])){
                 $_SESSION['doctor_id'] = $row['doctor_id'];
-                header("Location: ../../snr/doctor-dashboard/dashboard.html");
+                header("Location: ../../doctor-dashboard/dashboard.html");
                 exit;
             }
             else{

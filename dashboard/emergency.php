@@ -1,4 +1,4 @@
-<head><link rel="stylesheet" href="../../snr/table.css">
+<head><link rel="stylesheet" href="../..table.css">
 </head>
 <?php
 session_start();

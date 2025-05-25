@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" href="../../snr/table.css">
+<link rel="stylesheet" href="../../table.css">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
@@ -27,7 +27,7 @@
         $(document).ready(function() {
     $('#download-btn').click(function() {
         
-        window.location.href = '/snr/generate_patientinfo.php';
+        window.location.href = 'generate_patientinfo.php';
         
     });
 });
@@ -51,7 +51,7 @@ if ($conn->connect_error) {
 
 
 if (!isset($_SESSION['hospital_id'])) {
-  header("Location:../../snr/index.php");
+  header("Location:../../index.php");
   exit();
 }
 

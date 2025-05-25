@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
     $status = "inactive";
-    $profile = "\snr\pic\icon.png";
+    $profile = "/pic/icon.png";
 
     if ($password !== $confirm_password) {
         echo "Error: Passwords do not match.";
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
         $conn->close();
         // Redirect to a success page or login page
-        header("Location: verify.php");
+        header("Location: admin_login.php");
         exit;
     } else {
         // Handle duplicate email or other errors
@@ -55,8 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Signup Form</title>
-    <link rel="stylesheet" href="/snr/style.css">
-    <link rel="stylesheet" type="text/css" href="/snr/patient_signup.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../patient_signup.css">
     <style>
         .error {
             color: red;
@@ -116,10 +116,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 </head>
 <body>
-<?php include "../../snr/header.html" ?>
+<?php include "../header.html" ?>
     <div class="signup-container">
         <div class="left-section">
-            <img src="/snr/pic/logo.png" alt="Your Logo">
+            <img src="../pic/logo.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">
@@ -147,6 +147,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-    <?php include "../../snr/footer.html"?>
+    <?php include "../footer.html"?>
 </body>
 </html>

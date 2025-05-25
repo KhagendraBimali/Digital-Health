@@ -157,7 +157,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if (!isset($_SESSION['doctor_id'])) {
-    header("Location:../../snr/index.php");
+    header("Location:../../index.php");
     exit();
 }
 

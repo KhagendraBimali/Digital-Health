@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../../snr/patient_signup.css">
+<link rel="stylesheet" type="text/css" href="../../patient_signup.css">
 <style>
     .error {
     color: red;

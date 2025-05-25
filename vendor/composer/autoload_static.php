@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
+class ComposerStaticInitc867b37b2969332f6cfbdb0f22cc85f0
 {
     public static $files = array (
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
@@ -58,8 +58,8 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         ),
         'voku\\' => 
         array (
-            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
-            1 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
+            0 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
+            1 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
         'ZipStream\\' => 
         array (
@@ -124,9 +124,9 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2185d2f99bcd56787481d9357a5972d3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc867b37b2969332f6cfbdb0f22cc85f0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc867b37b2969332f6cfbdb0f22cc85f0::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc867b37b2969332f6cfbdb0f22cc85f0::$classMap;
 
         }, null, ClassLoader::class);
     }
