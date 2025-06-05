@@ -184,7 +184,13 @@ body, #slider, .wrap, .slide-content {
     border: 1px solid red;
     border-radius: 1px;
     width: 50%;
-    padding: 20px; 
+    padding: 20px;
+    text-align: center;
+}
+
+.aboutpic img {
+    display: block;
+    margin: 0 auto;
 }
 
 .abouttext {
@@ -245,12 +251,17 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-
-   
+footer, .footer {
+  background: #219653 !important;
+  color: #fff !important;
+}
+.footer a, footer a, .footer-column a {
+  color: #fff !important;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer a:hover, footer a:hover, .footer-column a:hover {
+  color: #e0ffe0 !important;
 }
 
 .footer-container {
@@ -331,12 +342,32 @@ footer {
 }
 
 /* Section Titles Hover Animation */
-#logins, #about, #contact {
+#logins, #about, #contact, h1, h2, h3 {
   transition: color 0.3s;
   cursor: pointer;
 }
-#logins:hover, #about:hover, #contact:hover {
+#logins:hover, #about:hover, #contact:hover, h1:hover, h2:hover, h3:hover {
   color: #219653;
+}
+
+/* Contact Us and Footer Links Hover */
+a, .footer a, footer a, .footer-column a {
+  transition: color 0.3s;
+}
+a:hover, .footer a:hover, footer a:hover, .footer-column a:hover {
+  color: #219653 !important;
+}
+
+/* Send Message Button Hover */
+input[type="submit"], button, .login-button {
+  background: #219653 !important;
+  color: #fff !important;
+  border: none !important;
+  transition: background 0.3s, color 0.3s;
+}
+input[type="submit"]:hover, button:hover, .login-button:hover {
+  background: #176b3a !important;
+  color: #fff !important;
 }
 
 /* Slider Styles */
@@ -371,6 +402,139 @@ footer {
   .slider-container, .carousel-container {
     max-width: 98vw;
   }
+  nav ul {
+    margin-right: 10px;
+  }
+  .about, .login-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .aboutpic, .abouttext, .image-box, .login-box {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .footer-column {
+    padding: 10px 0;
+  }
+}
+@media (max-width: 600px) {
+  nav, .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  nav ul, .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li, .nav-links li {
+    margin: 10px 0;
+  }
+  .about, .login-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .aboutpic, .abouttext, .image-box, .login-box {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+  }
+  h1 {
+    font-size: 1.3em;
+    margin-top: 10px;
+  }
+  form {
+    width: 98vw;
+    min-width: 0;
+    padding: 10px;
+  }
+  .footer-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 5px;
+  }
+  .footer-column {
+    padding: 5px 0;
+  }
+  table, #tab {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    font-size: 0.9em;
+  }
+  th, td {
+    white-space: nowrap;
+  }
+  .slider-slide img, .carousel-slide img {
+    height: 120px;
+  }
+}
+img, .image-box img, .aboutpic img, .login-box img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- FINAL GREEN FOOTER & HOVER OVERRIDES (DO NOT MOVE) --- */
+footer, .footer, body > footer, html body footer {
+  background: #219653 !important;
+  color: #fff !important;
+}
+.footer a, footer a, .footer-column a {
+  color: #fff !important;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer a:hover, footer a:hover, .footer-column a:hover {
+  color: #e0ffe0 !important;
+}
+input[type="submit"], button, .login-button {
+  background: #219653 !important;
+  color: #fff !important;
+  border: none !important;
+  transition: background 0.3s, color 0.3s;
+}
+input[type="submit"]:hover, button:hover, .login-button:hover {
+  background: #176b3a !important;
+  color: #fff !important;
+}
+#logins, #about, #contact, h1, h2, h3 {
+  transition: color 0.3s;
+  cursor: pointer;
+}
+#logins:hover, #about:hover, #contact:hover, h1:hover, h2:hover, h3:hover {
+  color: #219653 !important;
+}
+a, .footer a, footer a, .footer-column a {
+  transition: color 0.3s;
+}
+a:hover, .footer a:hover, footer a:hover, .footer-column a:hover {
+  color: #219653 !important;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  border: 2px solid #219653;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+/* --- END FINAL GREEN FOOTER & HOVER OVERRIDES --- */
+
+/* Add hover effect for input fields and textarea in forms */
+form input[type="text"]:hover,
+form input[type="email"]:hover,
+form input[type="tel"]:hover,
+form textarea:hover {
+  border-color: #4CAF50;
+  transition: border-color 0.3s ease-in-out;
 }
 
 

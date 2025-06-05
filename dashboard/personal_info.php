@@ -37,42 +37,106 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $stmt->execute() ;
     
     if ($profile['error'] == UPLOAD_ERR_OK) {
-        $profileDirectory = "C:/xampp/htdocs/pic/";
-        $targetProfile = "pic/" . basename($profile['name']);
-        $profilePath = $profileDirectory . basename($profile['name']);
+        $profileDirectory = "D:/xampp/htdocs/project/pic/";
+        $fileName = basename($profile['name']);
+        $profilePath = $profileDirectory . $fileName;
         
-        move_uploaded_file($profile['tmp_name'], $profilePath);
-        
-        
-        $updateProfileQuery = 'UPDATE patients_signup SET profile=? WHERE patient_id=?';
-        $updateProfileStmt = $conn->prepare($updateProfileQuery);
-        $updateProfileStmt->bind_param('ss', $targetProfile, $patientId);
-        $updateProfileStmt->execute();
-        $updateProfileStmt->close();
+        if (move_uploaded_file($profile['tmp_name'], $profilePath)) {
+            
+            $updateProfileQuery = 'UPDATE patients_signup SET profile=? WHERE patient_id=?';
+            $updateProfileStmt = $conn->prepare($updateProfileQuery);
+            $dbStorePath = '../pic/' . $fileName;
+            $updateProfileStmt->bind_param('ss', $dbStorePath, $patientId);
+            
+            if ($updateProfileStmt->execute()) {
+                 echo "<p style='color:green;'>Profile picture uploaded and database updated successfully.</p>";
+            } else {
+                 echo "<p style='color:red;'>Error updating database: " . $updateProfileStmt->error . "</p>";
+            }
+            $updateProfileStmt->close();
+        } else {
+            echo "<p style='color:red;'>Error moving uploaded profile picture. Check directory permissions.</p>";
+        }
+    } else if ($profile['error'] != UPLOAD_ERR_NO_FILE) {
+        echo "<p style='color:red;'>Profile picture upload error: ";
+        switch ($profile['error']) {
+            case UPLOAD_ERR_INI_SIZE:
+            case UPLOAD_ERR_FORM_SIZE:
+                echo "Uploaded file exceeds maximum file size.";
+                break;
+            case UPLOAD_ERR_PARTIAL:
+                echo "File was only partially uploaded.";
+                break;
+            case UPLOAD_ERR_NO_TMP_DIR:
+                echo "Missing a temporary folder for uploads.";
+                break;
+            case UPLOAD_ERR_CANT_WRITE:
+                echo "Failed to write file to disk.";
+                break;
+            case UPLOAD_ERR_EXTENSION:
+                echo "A PHP extension stopped the file upload.";
+                break;
+            default:
+                echo "Unknown error code: " . $profile['error'];
+                break;
+        }
+        echo "</p>";
     }
     
-    if (is_array($images) && count($images['name']) > 0) {
+    if (is_array($images) && count($images['name']) > 0 && $images['name'][0] != '') {
         for ($i = 0; $i < count($images['name']); $i++) {
-            $tDirectory = "C:/xampp/htdocs/pic/";
             
             if ($images['error'][$i] == UPLOAD_ERR_OK) {
+                $tDirectory = "D:/xampp/htdocs/project/pic/";
+                $fileName = basename($images['name'][$i]);
+                $imagePath = $tDirectory . $fileName;
                 
-                $targetDirectory = "pic/";
-                $targetDirectory = $targetDirectory . basename($images['name'][ $i ]);
-                $imagePath = $tDirectory . basename($images['name'][$i]);
-                
-                move_uploaded_file($images['tmp_name'][$i], $imagePath);
-                
-                $query = 'INSERT INTO medical_report (patient_id, image) VALUES (?, ?)';
-                $stmt = $conn->prepare($query);
-                $stmt->bind_param('ss', $patientId, $targetDirectory);
-                $stmt->execute();
-                $stmt->close();
+                if (move_uploaded_file($images['tmp_name'][$i], $imagePath)) {
+                    $dbStorePath = '../pic/' . $fileName;
+                    $query = 'INSERT INTO medical_report (patient_id, image) VALUES (?, ?)';
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param('ss', $patientId, $dbStorePath);
+                    
+                    if ($stmt->execute()) {
+                         echo "<p style='color:green;'>Medical record " . ($i + 1) . " uploaded successfully.</p>";
+                    } else {
+                         echo "<p style='color:red;'>Error inserting medical record " . ($i + 1) . " into database: " . $stmt->error . "</p>";
+                    }
+                    $stmt->close();
+                } else {
+                    echo "<p style='color:red;'>Error moving uploaded medical record " . ($i + 1) . ". Check directory permissions.</p>";
+                }
+            } else if ($images['error'][$i] != UPLOAD_ERR_NO_FILE) {
+                echo "<p style='color:red;'>Medical record " . ($i + 1) . " upload error: ";
+                 switch ($images['error'][$i]) {
+                    case UPLOAD_ERR_INI_SIZE:
+                    case UPLOAD_ERR_FORM_SIZE:
+                        echo "Uploaded file exceeds maximum file size.";
+                        break;
+                    case UPLOAD_ERR_PARTIAL:
+                        echo "File was only partially uploaded.";
+                        break;
+                    case UPLOAD_ERR_NO_TMP_DIR:
+                        echo "Missing a temporary folder for uploads.";
+                        break;
+                    case UPLOAD_ERR_CANT_WRITE:
+                        echo "Failed to write file to disk.";
+                        break;
+                    case UPLOAD_ERR_EXTENSION:
+                        echo "A PHP extension stopped the file upload.";
+                        break;
+                    default:
+                        echo "Unknown error code: " . $images['error'][$i];
+                        break;
+                }
+                echo "</p>";
             }
         }
     }
-    header('Location: dashboard.html');
-    exit;
+
+    // Redirect only after displaying messages, or handle with JavaScript/AJAX on the client side
+    // header('Location: dashboard.html');
+    // exit;
 }
 ?>
 <html lang="en">
@@ -295,9 +359,7 @@ if ($result->num_rows > 0) {
     
         echo '<div id="imageContainer">';
         foreach ($imagesArray as $index => $image) {
-            echo '<div style="width: 138px; height: 177px; margin-right: 10px; flex-shrink: 0;">';
-            echo '<img class="previewImage" src="' . $image . '" alt="Medical record image" onclick="openPreview(' . $index . ')">';
-            echo '</div>';
+            echo '<img class="previewImage" src="../' . $image . '" alt="Medical record image" onclick="openPreview(' . $index . ')">';
         }
         echo '</div>';
         echo '</div>';

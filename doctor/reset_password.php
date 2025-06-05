@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <div class="signup-container">
         <?php var_dump($_SESSION);?>
         <div class="left-section">
-            <img src="pic/logo.png" alt="Your Logo">
+            <img src="pic/logod.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">

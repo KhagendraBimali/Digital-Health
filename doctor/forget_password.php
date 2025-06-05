@@ -51,7 +51,7 @@ $conn->close();
     <?php include "../header.html"?>
     <div class="signup-container">
         <div class="left-section">
-            <img src="../pic/logo.png" alt="Your Logo">
+            <img src="../pic/logod.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">

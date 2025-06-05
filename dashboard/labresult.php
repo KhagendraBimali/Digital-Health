@@ -34,7 +34,7 @@ if($result->num_rows>0){
         if($row['bloodReport']!==''){
           echo '<div>';
           echo '<div class="picture-item">';
-          echo '<img src="'.$row['bloodReport'].'" alt="Blood Report Image" onclick="openPreview(\'' . $row['bloodReport'] . '\')">';
+          echo '<img src="../'.$row['bloodReport'].'" alt="Blood Report Image" onclick="openPreview(\'' . $row['bloodReport'] . '\')">';
           echo '</div>';
           echo '<label>Blood Report</label>';
           echo '</div>';
@@ -42,7 +42,7 @@ if($result->num_rows>0){
         if($row['xrayReport']!==''){
           echo '<div>';
           echo '<div class="picture-item">';
-          echo '<img src="'.$row['xrayReport'].'" alt="Xray Report Image" onclick="openPreview(\'' . $row['xrayReport'] . '\')">';
+          echo '<img src="../'.$row['xrayReport'].'" alt="Xray Report Image" onclick="openPreview(\'' . $row['xrayReport'] . '\')">';
           echo '</div>';
           echo '<label>Xray Report</label>';
           echo '</div>';
@@ -50,7 +50,7 @@ if($result->num_rows>0){
         if($row['videoXrayReport']!==''){
           echo '<div>';  
           echo '<div class="picture-item">';
-          echo '<img src="'.$row['videoXrayReport'].'" alt="Video Xray Report Image" onclick="openPreview(\'' . $row['videoXrayReport'] . '\')">';
+          echo '<img src="../'.$row['videoXrayReport'].'" alt="Video Xray Report Image" onclick="openPreview(\'' . $row['videoXrayReport'] . '\')">';
           echo '</div>';
           echo '<label>Video Xray Report</label>';
           echo '</div>';
@@ -58,7 +58,7 @@ if($result->num_rows>0){
         if($row['otherReport']!==''){
           echo '<div>';
           echo '<div class="picture-item">';
-          echo '<img src="'.$row['otherReport'].'" alt="Other Report Image" onclick="openPreview(\'' . $row['otherReport'] . '\')">';
+          echo '<img src="../'.$row['otherReport'].'" alt="Other Report Image" onclick="openPreview(\'' . $row['otherReport'] . '\')">';
           echo '</div>';
           echo '<label>Other Report</label>';
           echo '</div>';

@@ -27,7 +27,7 @@
         $(document).ready(function() {
     $('#download-btn').click(function() {
         
-        window.location.href = 'generate_schedule.php/';
+        window.location.href = 'generate_schedule.php';
     });
 });
 
@@ -230,7 +230,7 @@ if ($result === false) {
           }
           echo '</td>';
     echo '</tr>';
-}
+    }
 }
     echo '</table>';
     echo '</div>';

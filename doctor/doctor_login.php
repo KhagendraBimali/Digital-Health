@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         while($row=mysqli_fetch_assoc($result)){
             if(password_verify($password, $row['password'])){
                 $_SESSION['doctor_id'] = $row['doctor_id'];
-                header("Location: ../../doctor-dashboard/dashboard.html");
+                header("Location: ../doctor-dashboard/dashboard.html");
                 exit;
             }
             else{
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <?php include "../header.html"?>
     <div class="signup-container">
         <div class="left-section">
-            <img src="../pic/logo.png" alt="Your Logo">
+            <img src="../pic/logod.png" alt="Your Logo">
         </div>
         <div class="right-section">
             <div class="signup-box">

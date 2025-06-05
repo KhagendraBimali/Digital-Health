@@ -138,7 +138,7 @@ try{
     <title>Signup Form</title>
     <link rel="stylesheet" href="../../table.css">
     <link rel="stylesheet" type="text/css" href="../../patient_signup.css">
-    <script src="https:
+    
 
 <script>
         $(document).ready(function() {
@@ -165,6 +165,7 @@ try{
     </script>
     <script>
            function showForm(formType) {
+            console.log('showForm called with:', formType);
             var bookForm = document.getElementById('bookForm');
             var viewForm = document.getElementById('viewForm');
 
@@ -278,6 +279,9 @@ try{
         }
         .error{
             color:red;
+        }
+        .search-bar {
+            z-index: 1000;
         }
         <style>
 .search-bar {

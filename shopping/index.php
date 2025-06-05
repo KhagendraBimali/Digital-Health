@@ -9,7 +9,7 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="/project/index.php"><img src="../pic/logo.png" alt="Logo" ></a>
+        <a href="/project/index.php"><img src="../pic/logod.png" alt="Logo" ></a>
       </div>
       <div class="search-bar">
         <form method="GET" action="index.php">    

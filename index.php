@@ -13,59 +13,25 @@
     
     <?php include "header.html";?>
     <div class="wrap">
-        
         <div id="slider">
             <div class="slide slide1">
-                <div class="slide-content">
-                </div>
+                <div class="slide-content"></div>
             </div>
             <div class="slide slide2">
-                <div class="slide-content">
-                </div>
+                <div class="slide-content"></div>
             </div>
             <div class="slide slide3">
-                <div class="slide-content">
-                </div>
+                <div class="slide-content"></div>
             </div>
         </div>
     </div>
     <!-- Image Slider Section -->
-    <div class="carousel-container">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide"><img src="pics/ward.webp" alt="Slide 1"></div>
-        <div class="carousel-slide"><img src="pics/images1.jpg" alt="Slide 2"></div>
-        <div class="carousel-slide"><img src="pics/images2.jpg" alt="Slide 3"></div>
-        <div class="carousel-slide"><img src="pics/images3.jpg" alt="Slide 4"></div>
-        <div class="carousel-slide"><img src="pics/ward.webp" alt="Slide 1 Clone"></div>
-      </div>
-    </div>
-    <script>
-    // Cyclic slider animation
-    const track = document.getElementById('carouselTrack');
-    const slides = document.querySelectorAll('.carousel-slide');
-    let currentIndex = 0;
-    const slideCount = slides.length;
-    function goToSlide(index) {
-      track.style.transition = 'transform 0.7s cubic-bezier(0.77,0,0.175,1)';
-      track.style.transform = `translateX(-${index * 100}vw)`;
-    }
-    function nextSlide() {
-      currentIndex++;
-      goToSlide(currentIndex);
-      if (currentIndex === slideCount - 1) {
-        setTimeout(() => {
-          track.style.transition = 'none';
-          currentIndex = 0;
-          track.style.transform = `translateX(0vw)`;
-        }, 700);
-      }
-    }
-    setInterval(nextSlide, 3000);
-    </script>
+    
+    
     <h1 id="logins">Logins</h1>
     <div class="login-container">
         <div class="image-box">
-            <img src="pic/logo.png" alt="Hospital Image">
+            <img src="pic/logod.png" alt="Hospital Image">
         </div>
         <div class="login-box">
             <h1>Welcome to the Digital Health</h1>
@@ -78,10 +44,10 @@
   <h1 id="about">About Us</h1> 
    <div class="about">
     <div class="aboutpic">
-        <img src="pic/logo.png" alt="">
+        <img src="pic/logod.png" alt="">
         </div>
         <div class="abouttext">
-            <p>Digital health is the pioneer online healthcare
+            <p>Digital Health is the pioneer online healthcare
                 service provider in eastern Nepal where patients
                 can consult certified medical personnel and get 
                 additional health related services along with 
